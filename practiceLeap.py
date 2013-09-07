@@ -28,7 +28,7 @@ class MyListener(Leap.Listener):
 		# This has information on if any hands are present within the controller's vision
 		frame = controller.frame()
 
-		if not frame.hands.empty: # If there is something within the controller's vision
+		if not frame.hands.is_empty: # If there is something within the controller's vision
 
 			# Get the first hand
 			# NOTE: The Frame object stores the amount of hand objects (extends Interface) in a list
@@ -38,7 +38,7 @@ class MyListener(Leap.Listener):
 			# NOTE: Each hand object has its own list of finger objects (extends Pointable)
 			fingers = hand.fingers
 
-			if not hand.fingers.empty: # Check if any fingers present
+			if not hand.fingers.is_empty: # Check if any fingers present
 				
 				# Check the length of the list of fingers
 				if len(fingers) == 1:
@@ -54,7 +54,7 @@ class MyListener(Leap.Listener):
 				
 		# if gestures were enabled, should also check if any gestures are present in the frame as well
 		# can check gestures with frame.gestures().empty -> returns list of gestures present in Frame object
-		if frame.hands.empty:
+		if frame.hands.is_empty:
 			print "No fingers"
 
 def main():
